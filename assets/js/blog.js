@@ -1,5 +1,5 @@
 // TODO: Create a variable that selects the main element
-const main = document.getElementById("main");
+// const main = document.getElementById("posts");
 
 // TODO: Create a function that builds an element and appends it to the DOM
 
@@ -10,28 +10,41 @@ const main = document.getElementById("main");
 // TODO: Call the function to render the list of blog posts
 
 document.addEventListener("DOMContentLoaded", function () {
-  displayPosts();
+  // Get data from local storage
+  const posts = JSON.parse(localStorage.getItem("posts")) || [];
 
-  function displayPosts() {
-    // Get posts from local storage
-    let posts = JSON.parse(localStorage.getItem("posts")) || [];
+  // Create variable where data will be rendered
+  const blogContainer = document.getElementById("blogContainer");
 
-    // Get the posts container
-    const postsContainer = document.getElementById("posts");
-
-    // Clear existing content
-    postsContainer.innerHTML = "";
-
-    // Loop through posts and create HTML for each post
+  if (posts.length > 0) {
+    // Iterate through each post and create elements to display them
     posts.forEach((post) => {
-      const postElement = document.createElement("div");
-      postElement.className = "post";
-      postElement.innerHTML = `
-          <h2>${post.title}</h2>
-          <p><strong>By:</strong> ${post.username}</p>
-          <p>${post.content}</p>
-        `;
-      postsContainer.appendChild(postElement);
+      // Create a new div element for the post
+      const postDiv = document.createElement("div");
+      postDiv.classList.add("post");
+
+      // Create elements to display username, title, and content
+      const titleElem = document.createElement("h2");
+      const usernameElem = document.createElement("p");
+      const contentElem = document.createElement("p");
+
+      // Set the text content to the data from the post
+      titleElem.textContent = `Title: ${post.title}`;
+      usernameElem.textContent = `Posted by: ${post.username}`;
+      contentElem.textContent = `Content: ${post.content}`;
+
+      // Append the elements to the post div
+      postDiv.appendChild(titleElem);
+      postDiv.appendChild(usernameElem);
+      postDiv.appendChild(contentElem);
+
+      // Append the post div to the blog container
+      blogContainer.appendChild(postDiv);
     });
+  } else {
+    // If no posts, show a message
+    const noDataMessage = document.createElement("p");
+    noDataMessage.textContent = "No blog posts found.";
+    blogContainer.appendChild(noDataMessage);
   }
 });

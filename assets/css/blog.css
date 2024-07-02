@@ -52,6 +52,7 @@ main {
   height: calc(100vh - 11rem);
   overflow-y: scroll;
   justify-content: flex-start;
+  color: black;
 }
 
 ul {
