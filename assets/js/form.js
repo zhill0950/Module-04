@@ -6,6 +6,13 @@
 
 // Couldn't get the code to run without this:
 document.addEventListener("DOMContentLoaded", function () {
+  // Checking local storage for users theme preference
+  const currentMode = localStorage.getItem("theme");
+
+  if (currentMode === "dark") {
+    document.body.classList.add("dark");
+  }
+
   // "Create a variable that selects the form element..."
   const form = document.getElementById("form");
   // "Add an event listener to the form on submit..."
@@ -22,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // "If the form is submitted with missing data, display an error message to the user..."
     if (!username || !title || !content) {
-      alert("Please complete all fields.");
+      alert("Please complete the form...");
       return;
     }
 

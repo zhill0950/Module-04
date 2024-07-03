@@ -7,6 +7,7 @@
 */
 a {
   text-decoration: none;
+  font-size: 30px;
 }
 
 article {
@@ -15,12 +16,15 @@ article {
   border-radius: 4px;
   padding: 1rem;
   position: relative;
+  max-height: 120px;
 }
 
 article blockquote {
   margin: 1rem;
   margin-bottom: 2rem;
   font-style: italic;
+  overflow: auto;
+  max-height: 50px;
 }
 
 article h2 {
@@ -39,6 +43,7 @@ footer {
   position: fixed;
   inset: 0;
   top: calc(100% - 5rem);
+  text-align: center;
 }
 
 li {
@@ -57,6 +62,14 @@ main {
 
 ul {
   list-style: none;
+}
+
+p {
+  font-size: 0.75rem;
+}
+
+div {
+  font-size: 0.9rem;
 }
 
 /*
@@ -80,6 +93,10 @@ ul {
   color: var(--dark);
 }
 
+.post:hover {
+  background-color: gray;
+}
+
 /*
   IDs
 */
@@ -98,6 +115,25 @@ ul {
 }
 
 #back:hover {
+  border-style: inset;
+  background-color: var(--dark-accent-action);
+}
+
+#clear {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-right: 1rem;
+  border: groove black;
+  background-color: var(--dark-accent);
+  color: var(--light);
+}
+
+#clear:active {
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+  background-color: var(--dark-accent);
+}
+
+#clear:hover {
   border-style: inset;
   background-color: var(--dark-accent-action);
 }
